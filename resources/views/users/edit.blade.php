@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="page-header">
         <div class="pull-right">
-            {{ link_to_route('users.show', trans('app.show_profile').' '.$user->name, [$user->id], ['class' => 'btn btn-default']) }}
+            {{ link_to_route('users.show', trans('app.show_profile'), [$user->id], ['class' => 'btn btn-default']) }}
         </div>
         {{ trans('user.edit') }} {{ $user->profileLink() }}
     </h2>

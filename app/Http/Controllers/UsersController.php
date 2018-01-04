@@ -157,6 +157,17 @@ class UsersController extends Controller
     }
 
     /**
+     * Print family book below the specified User.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response as PDF
+     */
+    public function book(User $user)
+    {
+        dd('You need to activate family_tree_to_pdf.', $user);
+    }
+
+    /**
      * Remove the specified User from storage.
      *
      * @param  \App\User  $user
@@ -164,6 +175,6 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        dd('You are willing to destroy this user', $user);
     }
 }
