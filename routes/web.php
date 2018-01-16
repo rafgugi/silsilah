@@ -30,6 +30,7 @@ Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit');
 Route::patch('users/{user}', 'UsersController@update')->name('users.update');
 Route::get('users/{user}/chart', 'UsersController@chart')->name('users.chart');
 Route::get('users/{user}/tree', 'UsersController@tree')->name('users.tree');
+Route::get('users/{user}/export', 'UsersController@export')->name('users.export');
 
 Route::get('users/{user}/marriages', 'UserMarriagesController@index')->name('users.marriages');
 

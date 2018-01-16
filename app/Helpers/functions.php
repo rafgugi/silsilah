@@ -29,3 +29,15 @@ function formatSizeUnits($bytes)
 
     return $bytes;
 }
+
+/**
+ * Hash an id with a salt.
+ * @param String | Int id
+ * @param String salt
+ *
+ * @return String hashed
+ */
+function salt($id, $salt = '')
+{
+    return hash('md5', "$id$salt");
+}

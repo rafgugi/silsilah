@@ -33,4 +33,9 @@ class Couple extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function uuid()
+    {
+        return salt($this->id, 'Couple');
+    }
 }

@@ -183,4 +183,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
+
+    public function uuid()
+    {
+        return salt($this->id, 'User');
+    }
 }

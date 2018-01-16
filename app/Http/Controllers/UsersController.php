@@ -166,4 +166,44 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function export(User $user)
+    {
+        $users = collect();
+        $couples = collect();
+
+        $users_queue = collect();
+        $user_id_flag = collect();
+        $couple_id_flag = collect();
+
+        $users_queue->push($user);
+        while (!$users_queue->isEmpty()) {
+            /* take a user from queue */
+            $user = $users_queue->shift();
+
+            /* if its already in the users collection, ignore */
+            if ($user_id_flag->contains($user->id)) {
+                continue;
+            }
+            $users->push($user);
+            $user_id_flag->push($user->id);
+
+            /* searching its marriage and children, add to queue */
+            foreach ($user->marriages as $marriage) {
+                /* if its already in the couples collection, ignore */
+                if ($couple_id_flag->contains($marriage->id)) {
+                    continue;
+                }
+                $couples->push($marriage);
+                $couple_id_flag->push($marriage->id);
+
+                $users_queue->push($marriage->husband);
+                $users_queue->push($marriage->wife);
+                foreach ($marriage->childs as $child) {
+                    $users_queue->push($child);
+                }
+            }
+        }
+        dd($users, $couples, $users_queue);
+    }
 }
